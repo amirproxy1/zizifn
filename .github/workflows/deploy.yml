@@ -34,12 +34,13 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         env:
           ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           UUID: ${{ inputs.uuid || secrets.UUID || 'be0ff9df-1468-41a0-8865-796d1c6800db' }}
           PROXYIP: ${{ inputs.proxyip || secrets.PROXYIP || 'di.nscl.ir' }}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "latest"
           vars: |
             UUID
             PROXYIP
